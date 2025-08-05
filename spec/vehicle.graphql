@@ -1,0 +1,6 @@
+type Vehicle {
+    id: ID!
+    model: String
+    year: Int
+}
+

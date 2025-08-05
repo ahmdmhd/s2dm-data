@@ -94,7 +94,7 @@ jobs:
         CONCEPT_NAMESPACE: ${{ vars.CONCEPT_NAMESPACE || '' }}
         CONCEPT_PREFIX: ${{ vars.CONCEPT_PREFIX || '' }}
       run: |
-        CMD="s2dm registry init -s ./current/spec -u ./current/units.yaml -o ./.artifacts/registry/history"
+        CMD="s2dm registry init -s ./current/spec -u ./current/units.yaml -o ./.artifacts/registry/registry.json"
         [ -n "$CONCEPT_NAMESPACE" ] && CMD="$CMD --concept-namespace '$CONCEPT_NAMESPACE'"
         [ -n "$CONCEPT_PREFIX" ] && CMD="$CMD --concept-prefix '$CONCEPT_PREFIX'"
         eval "$CMD"
@@ -105,7 +105,7 @@ jobs:
         CONCEPT_NAMESPACE: ${{ vars.CONCEPT_NAMESPACE || '' }}
         CONCEPT_PREFIX: ${{ vars.CONCEPT_PREFIX || '' }}
       run: |
-        CMD="s2dm registry update -s ./current/spec -sh ./.artifacts/registry/history -u ./current/units.yaml -o ./.artifacts/registry/history"
+        CMD="s2dm registry update -s ./current/spec -sh ./.previous-release/registry/registry.json -u ./current/units.yaml -o ./.artifacts/registry/registry.json"
         [ -n "$CONCEPT_NAMESPACE" ] && CMD="$CMD --concept-namespace '$CONCEPT_NAMESPACE'"
         [ -n "$CONCEPT_PREFIX" ] && CMD="$CMD --concept-prefix '$CONCEPT_PREFIX'"
         eval "$CMD"

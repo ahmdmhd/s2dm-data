@@ -147,13 +147,14 @@ jobs:
       run: |
         s2dm export vspec -s ./current/spec -o ./.artifacts/vspec/schema.vspec
 
-    - name: Bump version
+    - name: Bump version and push tags
       if: steps.version-check.outputs.CONTINUE == 'true'
       working-directory: current
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         bump-my-version bump ${{ steps.version-check.outputs.VERSION_BUMP }} --config-file ./.bumpversion.toml
+        git push origin ${{ github.ref_name }} --tags
 
     - name: Get latest tag
       if: steps.version-check.outputs.CONTINUE == 'true'
@@ -174,9 +175,3 @@ jobs:
           --title "Release ${LATEST_TAG}" \
           --notes "This release contains the artifacts from the automated migration workflow." \
           ../.artifacts/*
-
-    - name: Push tags
-      if: steps.version-check.outputs.CONTINUE == 'true'
-      working-directory: current
-      run: |
-        git push origin ${{ github.ref_name }} --tags

@@ -159,6 +159,7 @@ jobs:
     - name: Get latest tag
       if: steps.version-check.outputs.CONTINUE == 'true'
       id: get-latest-tag
+      working-directory: current
       run: |
         LATEST_TAG=$(git describe --tags --abbrev=0)
         echo "LATEST_TAG=$LATEST_TAG" >> "$GITHUB_OUTPUT"

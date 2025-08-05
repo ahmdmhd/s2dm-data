@@ -165,6 +165,7 @@ jobs:
 
     - name: Create release
       if: steps.version-check.outputs.CONTINUE == 'true'
+      working-directory: current
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         LATEST_TAG: ${{ steps.get-latest-tag.outputs.LATEST_TAG }}
@@ -172,9 +173,10 @@ jobs:
         gh release create "${LATEST_TAG}" \
           --title "Release ${LATEST_TAG}" \
           --notes "This release contains the artifacts from the automated migration workflow." \
-          ./.artifacts/*
+          ../.artifacts/*
 
     - name: Push tags
       if: steps.version-check.outputs.CONTINUE == 'true'
+      working-directory: current
       run: |
         git push origin ${{ github.ref_name }} --tags

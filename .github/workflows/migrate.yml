@@ -151,7 +151,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        bump-my-version bump ${{ steps.version-check.outputs.VERSION_BUMP }} --config-file ../.bumpversion.toml
+        bump-my-version bump ${{ steps.version-check.outputs.VERSION_BUMP }} --config-file ./.bumpversion.toml
         git push origin ${{ github.ref_name }} --tags
 
     - name: Get latest tag

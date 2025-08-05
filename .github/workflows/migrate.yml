@@ -41,7 +41,7 @@ jobs:
     - name: Activate venv
       working-directory: s2dm
       run: |
-        source .venv/bin/activate
+        echo "${{ github.workspace }}/s2dm/.venv/bin" >> $GITHUB_PATH
 
     - name: Verify S2DM installation
       run: |

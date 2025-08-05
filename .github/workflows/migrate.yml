@@ -100,7 +100,7 @@ jobs:
         eval "$CMD"
 
     - name: Update registry
-      if: steps.version-check.outputs.CONTINUE == 'true' && steps.version-check.outputs.IS_INITIAL_RELEASE != 'false'
+      if: steps.version-check.outputs.CONTINUE == 'true' && steps.version-check.outputs.IS_INITIAL_RELEASE != 'true'
       env:
         CONCEPT_NAMESPACE: ${{ vars.CONCEPT_NAMESPACE || '' }}
         CONCEPT_PREFIX: ${{ vars.CONCEPT_PREFIX || '' }}

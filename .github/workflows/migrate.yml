@@ -171,7 +171,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         LATEST_TAG: ${{ steps.get-latest-tag.outputs.LATEST_TAG }}
       run: |
+        tar -czf ../release.tar.gz -C ../.artifacts .
         gh release create "${LATEST_TAG}" \
           --title "Release ${LATEST_TAG}" \
           --notes "This release contains the artifacts from the automated migration workflow." \
-          ../.artifacts/*
+          ../release.tar.gz

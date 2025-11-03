@@ -22,6 +22,7 @@ jobs:
       - name: Run S2DM migration
         uses: ahmdmhd/s2dm-migration-action@main
         with:
+          repository-path: ./current
           spec-path: ./current/spec
           github-token: ${{ secrets.GITHUB_TOKEN }}
           concept-namespace: ${{ vars.CONCEPT_NAMESPACE || '' }}

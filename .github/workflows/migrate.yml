@@ -20,7 +20,7 @@ jobs:
           path: current
 
       - name: Run S2DM migration
-        uses: ahmed/s2dm-migration-action@main
+        uses: ahmdmhd/s2dm-migration-action@main
         with:
           spec-path: ./current/spec
           github-token: ${{ secrets.GITHUB_TOKEN }}

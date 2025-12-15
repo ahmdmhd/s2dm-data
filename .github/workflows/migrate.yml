@@ -21,7 +21,7 @@ jobs:
           ssh-key: ${{ secrets.DEPLOY_KEY || '' }}
 
       - name: Run S2DM migration
-        uses: ahmdmhd/s2dm-migration-action@main
+        uses: COVESA/s2dm/actions/s2dm-publish@main
         with:
           repository-path: ./current
           spec-path: ./current/spec

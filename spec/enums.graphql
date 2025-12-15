@@ -1,0 +1,4 @@
+enum DistanceUnitEnum {
+    KM
+    MILES
+}

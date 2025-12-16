@@ -38,10 +38,16 @@ jobs:
       #     skos-language: ${{ vars.SKOS_LANGUAGE || '' }}
 
       - name: Run S2DM Compose
+        id: compose
         uses: ahmdmhd/s2dm-migration-action/actions/s2dm-compose@main
         with:
           repository-path: ./current
-          spec-path: ./current/spec
+          spec-path: ./spec
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          output-path: schema.graphql
           create-release: 'true'
+
+      - name: Print composed schema
+        run: |
+          echo "Composed schema file path: ${{ steps.compose.outputs.composed-schema-path }}"
+          echo "Contents of composed schema:"
+          cat "${{ steps.compose.outputs.composed-schema-path }}"

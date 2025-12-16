@@ -1,7 +1,7 @@
 type Vehicle {
     id: ID!
     model: String
-    year: Int!
+    year: Int
     color: String
     traveledDistance: DistanceUnitEnum!
 }
